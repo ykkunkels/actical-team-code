@@ -63,12 +63,12 @@ actical_TOST <- function(workdir) {
     dat1 <- dat1[(1:equal_lenght), ]
     dat2 <- dat2[(1:equal_lenght), ]
     
-    ## Take log() of activity counts to deal with unequal variances
-    dat1$ActivityCounts <- log(dat1$ActivityCounts)
-    dat1[dat1$ActivityCounts == -Inf, "ActivityCounts"] <- 0
-    
-    dat2$ActivityCounts <- log(dat2$ActivityCounts)
-    dat2[dat2$ActivityCounts == -Inf, "ActivityCounts"] <- 0
+    # ## Take log() of activity counts
+    # dat1$ActivityCounts <- log(dat1$ActivityCounts)
+    # dat1[dat1$ActivityCounts == -Inf, "ActivityCounts"] <- 0
+    # 
+    # dat2$ActivityCounts <- log(dat2$ActivityCounts)
+    # dat2[dat2$ActivityCounts == -Inf, "ActivityCounts"] <- 0
     
     
     ## Initialise parameters
@@ -97,17 +97,17 @@ actical_TOST <- function(workdir) {
       print("Variances are NOT equal, continuing...");message(cat(""))
     }
     
-    print("Testing for equal variances 2 - Levene's Test");message(cat(""))
-    group <- as.factor(c(rep(1, nrow(dat1)), rep(2, nrow(dat2))))
-    var_out2 <- leveneTest(c(dat1[, "ActivityCounts"], dat2[, "ActivityCounts"]), group)
-    
-    if (var_out2$`Pr(>F)`[1] > alpha) {
-      var_equal2 <- TRUE
-      print("Variances are equal, continuing...");message(cat(""))
-    }else{
-      var_equal2 <- FALSE
-      print("Variances are NOT equal, continuing...");message(cat(""))
-    }
+    # print("Testing for equal variances 2 - Levene's Test");message(cat(""))
+    # group <- as.factor(c(rep(1, nrow(dat1)), rep(2, nrow(dat2))))
+    # var_out2 <- leveneTest(c(dat1[, "ActivityCounts"], dat2[, "ActivityCounts"]), group)
+    # 
+    # if (var_out2$`Pr(>F)`[1] > alpha) {
+    #   var_equal2 <- TRUE
+    #   print("Variances are equal, continuing...");message(cat(""))
+    # }else{
+    #   var_equal2 <- FALSE
+    #   print("Variances are NOT equal, continuing...");message(cat(""))
+    # }
     
     
     
